@@ -493,7 +493,7 @@ class OrderManager(models.Manager):
                 paid=False,
                 user=self.instance,
                 order_round=get_current_order_round()
-            ).order_by('-pk')[0]
+            ).order_by('-pk').first()
         except IndexError:
             return get_or_create_order(user=self.instance)
 
@@ -507,7 +507,7 @@ class OrderManager(models.Manager):
                 paid=True,
                 user=self.instance,
                 order_round=get_current_order_round()
-            ).order_by('-pk')[0]
+            ).order_by('-pk').first()
         except IndexError:
             return
 
